@@ -1,13 +1,4 @@
-<template>
-<div>
-  <h1>Login!</h1>
-  <p>User Name: <input type="text" v-model="credentials.username" style="border: solid 1px black;"></p>
-  <p>Password: <input type="password" v-model="credentials.password" style="border: solid 1px black;"></p>
-  <button @click.native="authenticate()">Submit</button>
-</div>
-</template>
-<script>
-  import Axios from 'axios'
+import Axios from 'axios'
 import router from '@/router'
 const BirthdayAPI = `http://${window.location.hostname}:8081/api`
 
@@ -21,7 +12,7 @@ export default {
 
     user: {isAuthenticated: false},
     
-  methods: {
+
     authenticate (context, credentials, redirect) {
         console.log("Auth route hit, credentials: ", credentials)
         Axios.post(`${BirthdayAPI}/login`, credentials)
@@ -29,6 +20,4 @@ export default {
             console.log(data);
         })
     }
-  }
 }
-</script>

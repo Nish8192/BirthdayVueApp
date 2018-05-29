@@ -2,7 +2,7 @@ var express = require('express'),
     path = require('path'),
     bp = require('body-parser'),
     root = __dirname,
-    port = process.env.PORT || 8080,
+    port = process.env.PORT || 8081,
     app = express();
 
 
@@ -24,7 +24,7 @@ app.use(bp.urlencoded({
 
 require('./api.js')(app)
 
-app.set('port', (process.env.PORT || 8080));
+app.set('port', (process.env.PORT || 8081));
 
 http.listen(app.get('port'), function () {
     console.log('Server running on: ' + app.get('port'));
