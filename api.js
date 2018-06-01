@@ -22,7 +22,7 @@ module.exports = (app) => {
         let username = req.body.username,
             password = req.body.password;
 
-        if (username === 'test@email.com' && password === 'TestP@SS1') {
+        if (username === 'test@email.com' && password === 'test123') {
             req.session.user = username;
             return res.status(200).json({ success: true, data: req.body.credentials, message: 'Logged in successfully!' });
         } else if (username !== 'test@email.com') {
