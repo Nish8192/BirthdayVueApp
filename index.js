@@ -26,6 +26,25 @@ require('./api.js')(app)
 
 app.set('port', (process.env.PORT || 8081));
 
+app.use( (req, res, next) => {
+    // res.header("Access-Control-Allow-Origin", "");
+    // res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+
+    // res.header('Access-Control-Allow-Origin', '*');
+    // res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
+
+    // res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
+
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS'); 
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Content-Type', 'application/json');
+
+    // res.header('Access-Control-Allow-Headers', "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    //Auth Each API Request created by user.
+    next();
+});
+
 http.listen(app.get('port'), function () {
     console.log('Server running on: ' + app.get('port'));
     console.log(`The root directory is: ${root}`);
