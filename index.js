@@ -3,11 +3,20 @@ var express = require('express'),
     bp = require('body-parser'),
     root = __dirname,
     port = process.env.PORT || 8081,
-    app = express();
-
+    app = express(),
+    expressSession = require('express-session');
 
 
 app.use(express.static(path.join(__dirname, 'node_modules')));
+
+app.use(expressSession({
+    secret: "Th!s!s@ToughP@$$w0rd",
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+        maxAge: 7200000
+    }
+}));
 
 var http = require('http').Server(app);
 // var https = require('https').createServer(options, app);
